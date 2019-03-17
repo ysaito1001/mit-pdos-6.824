@@ -17,16 +17,16 @@ import (
 // of key/value pairs.
 //
 func mapF(filename string, contents string) []mapreduce.KeyValue {
-     var result []mapreduce.KeyValue
+	var result []mapreduce.KeyValue
 
-     words := strings.FieldsFunc(contents, func(r rune) bool {
-         return !unicode.IsLetter(r)
-     })
-     for _, word := range words {
-         result = append(result, mapreduce.KeyValue{word, "1"})
-     }
+	words := strings.FieldsFunc(contents, func(r rune) bool {
+		return !unicode.IsLetter(r)
+	})
+	for _, word := range words {
+		result = append(result, mapreduce.KeyValue{word, "1"})
+	}
 
-     return result
+	return result
 }
 
 //
@@ -35,7 +35,7 @@ func mapF(filename string, contents string) []mapreduce.KeyValue {
 // any map task.
 //
 func reduceF(key string, values []string) string {
-     return strconv.Itoa(len(values))
+	return strconv.Itoa(len(values))
 }
 
 // Can be run in 3 ways:
